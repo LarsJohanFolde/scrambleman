@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/phpdave11/gofpdf"
-	"scrambledesk-client/config"
-	"scrambledesk-client/internal/pdf"
+	"github.com/larsjohanfolde/scrambleman/scrambledesk/config"
+	"github.com/larsjohanfolde/scrambleman/scrambledesk/internal/pdf"
 )
 
 type Competition struct {
@@ -875,12 +875,9 @@ func (g *Group) DrawRoundPDF() {
 	pdf.SetFillColor(44, 62, 80)
 	pdf.Rect(0, 0, 1920, 1080, "F")
 
-	// regular := filepath.Join(config.FontDir, "HackNerdFont-Regular.ttf")
-	// bold := filepath.Join(config.FontDir, "HackNerdFont-Bold.ttf")
+    pdf.SetFontLocation(config.FontDir)
 	pdf.AddUTF8Font("hack", "", "HackNerdFont-Regular.ttf")
 	pdf.AddUTF8Font("hack", "B", "HackNerdFont-Bold.ttf")
-	//    pdf.AddUTF8Font("hack", "", regular)
-	// pdf.AddUTF8Font("hack", "B", bold)
 	font := "hack"
 	pdf.SetFont(font, "", 24)
 	pdf.SetXY(10, 10)

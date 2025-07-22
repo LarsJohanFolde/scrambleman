@@ -1,4 +1,4 @@
-module scrambledesk-client
+module github.com/larsjohanfolde/scrambleman/scrambledesk
 
 go 1.24.3
 

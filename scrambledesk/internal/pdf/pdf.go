@@ -3,7 +3,7 @@ package pdf
 import (
 	"fmt"
 	"path"
-	"scrambledesk-client/config"
+	"github.com/larsjohanfolde/scrambleman/scrambledesk/config"
 
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"

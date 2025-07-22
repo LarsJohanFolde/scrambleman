@@ -8,8 +8,8 @@ import (
 	"os/exec"
 	"time"
 
-	"scrambledesk-client/config"
-	"scrambledesk-client/internal/models"
+	"github.com/larsjohanfolde/scrambleman/scrambledesk/config"
+	"github.com/larsjohanfolde/scrambleman/scrambledesk/internal/models"
 )
 
 func main() {
@@ -128,7 +128,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		group.ClosedTimestamp = append(g.ClosedTimestamp, time.Now())
+		group.ClosedTimestamp = append(group.ClosedTimestamp, time.Now())
 
 		cmd = exec.Command(
 			"curl",
