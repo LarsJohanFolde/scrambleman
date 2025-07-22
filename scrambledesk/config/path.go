@@ -41,7 +41,21 @@ func init() {
 		AppDataDir = filepath.Join(homeDir, appName)
 	}
 
-	IpFile = fmt.Sprintf("%s/ip.txt", AppDataDir)
+	err = os.MkdirAll(AppDataDir, 0755)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	directories := []string{"archive", "avatars", "fonts", "certificates"}
+	for _, d := range directories {
+        dir := filepath.Join(AppDataDir, d)
+		err = os.MkdirAll(dir, 0755)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	IpFile = filepath.Join(AppDataDir, "ip.txt")
 	ipBytes, err := os.ReadFile(IpFile)
 	if err != nil {
 		log.Fatalf("Could not read IP from file: %v", err)
@@ -50,20 +64,6 @@ func init() {
 	CompetitorListURL = fmt.Sprintf("https://%s:2013/group", IP)
 	ScrambleURL = fmt.Sprintf("https://%s:2013/upload", IP)
 	FontDir = filepath.Join(AppDataDir, "fonts")
-
-	err = os.MkdirAll(AppDataDir, 0755)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	directories := []string{"archive", "avatars", "fonts", "certificates"}
-	for _, d := range directories {
-		dir := fmt.Sprintf("%s/%s", AppDataDir, d)
-		err = os.MkdirAll(dir, 0755)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
 
 	// Certificates
 	ClientCrt = filepath.Join(AppDataDir, "certificates", "client.crt")
